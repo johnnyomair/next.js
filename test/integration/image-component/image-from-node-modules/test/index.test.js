@@ -22,6 +22,22 @@ function runTests() {
       await browser.elementById('image-from-node-modules').getAttribute('src')
     ).toMatch('i.imgur.com')
   })
+
+  // #39330
+  it('should apply srcset from image config for node_modules when using priority', async () => {
+    browser = await webdriver(appPort, '/image-from-node-modules')
+
+    console.log(
+      await browser
+        .elementById('image-from-node-modules')
+        .getAttribute('srcset')
+    )
+    expect(
+      await browser
+        .elementById('image-from-node-modules')
+        .getAttribute('srcset')
+    ).toMatch('1234')
+  })
 }
 
 describe('Image Component Tests In Prod Mode', () => {

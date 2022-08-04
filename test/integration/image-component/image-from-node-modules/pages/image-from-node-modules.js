@@ -10,6 +10,7 @@ const Page = () => {
         width={1404}
         height={936}
         src="https://i.imgur.com/CgezKMb.jpg"
+        priority
       />
     </div>
   )
